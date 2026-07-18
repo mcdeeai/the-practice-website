@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { Section, Heading } from './ui'
 
 export function WhySection() {
@@ -68,32 +70,45 @@ export function MethodSection() {
   return (
     <Section eyebrow="Our method" id="method">
       <Heading>Start at the end. Then map the way there.</Heading>
-      <ol className="mt-10 grid gap-4 md:grid-cols-3">
-        {METHOD_STEPS.map((step, i) => (
-          <li
-            key={step.title}
-            className="rounded-3xl border border-border bg-background p-6"
-          >
-            <span className="font-mono text-sm tabular-nums text-primary">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <h3 className="mt-4 text-lg font-medium tracking-tight">
-              {step.title}
-            </h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-              {step.body}
-            </p>
-          </li>
-        ))}
-      </ol>
-      <p className="mt-10 max-w-[40ch] text-xl font-medium tracking-tight">
-        Our small team facilitates. Your team executes.
-      </p>
-      <p className="mt-4 max-w-[58ch] leading-relaxed text-muted-foreground">
-        That&apos;s the whole point. The work stays in your hands — so the
-        skill, the system, and the credit stay with you. No dependency. No
-        vendor you can&apos;t fire.
-      </p>
+      <div className="mt-10 grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">
+        <ol className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          {METHOD_STEPS.map((step, i) => (
+            <li
+              key={step.title}
+              className="rounded-3xl border border-border bg-background p-6"
+            >
+              <span className="font-mono text-sm tabular-nums text-primary">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 className="mt-4 text-lg font-medium tracking-tight">
+                {step.title}
+              </h3>
+              <p className="mt-2 max-w-[44ch] text-[15px] leading-relaxed text-muted-foreground">
+                {step.body}
+              </p>
+            </li>
+          ))}
+        </ol>
+        <figure className="flex min-h-80 overflow-hidden rounded-3xl border border-border bg-card lg:min-h-full">
+          <Image
+            src="/render-path.png"
+            alt="A cobalt ribbon following a deliberate path"
+            width={900}
+            height={1100}
+            className="h-full w-full object-cover"
+          />
+        </figure>
+      </div>
+      <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <p className="max-w-[40ch] text-xl font-medium tracking-tight">
+          Our small team facilitates. Your team executes.
+        </p>
+        <p className="max-w-[58ch] leading-relaxed text-muted-foreground">
+          That&apos;s the whole point. The work stays in your hands — so the
+          skill, the system, and the credit stay with you. No dependency. No
+          vendor you can&apos;t fire.
+        </p>
+      </div>
     </Section>
   )
 }
@@ -117,23 +132,31 @@ export function KeepSection() {
         Ten days in, there&apos;s no report to file. There&apos;s something that
         runs — and everything your team needs to own it.
       </p>
-      <ul className="mt-8 max-w-[60ch]">
-        {KEEP_ITEMS.map(([term, desc]) => (
-          <li
-            key={term}
-            className="grid grid-cols-[12px_1fr] gap-4 border-b border-border py-5 first:border-t"
-          >
-            <span
-              aria-hidden="true"
-              className="mt-2 size-2.5 bg-primary"
-            />
-            <span className="leading-relaxed">
-              <span className="font-medium">{term}</span>{' '}
-              <span className="text-muted-foreground">{desc}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
+      <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_0.72fr]">
+        <ul>
+          {KEEP_ITEMS.map(([term, desc]) => (
+            <li
+              key={term}
+              className="grid grid-cols-[12px_1fr] gap-4 border-b border-border py-5 first:border-t"
+            >
+              <span aria-hidden="true" className="mt-2 size-2.5 bg-primary" />
+              <span className="leading-relaxed">
+                <span className="font-medium">{term}</span>{' '}
+                <span className="text-muted-foreground">{desc}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <figure className="flex min-h-80 overflow-hidden rounded-3xl border border-border bg-card">
+          <Image
+            src="/render-system.png"
+            alt="Interlocking cobalt forms representing an owned system"
+            width={1000}
+            height={1000}
+            className="h-full w-full object-cover"
+          />
+        </figure>
+      </div>
     </Section>
   )
 }
@@ -337,10 +360,24 @@ export function NameSection() {
 export function ManifestoSection() {
   return (
     <Section eyebrow="Why this matters">
-      <Heading className="max-w-[16ch]">Play the long game.</Heading>
-      <p className="mt-6 max-w-[30ch] text-2xl font-light leading-snug tracking-tight md:text-[1.75rem]">
-        Make one thing work. Own it. Build from there — for years, not quarters.
-      </p>
+      <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.72fr]">
+        <div>
+          <Heading className="max-w-[16ch]">Play the long game.</Heading>
+          <p className="mt-6 max-w-[30ch] text-2xl font-light leading-snug tracking-tight md:text-[1.75rem]">
+            Make one thing work. Own it. Build from there — for years, not
+            quarters.
+          </p>
+        </div>
+        <figure className="flex min-h-80 overflow-hidden rounded-3xl border border-border bg-card">
+          <Image
+            src="/render-longgame.png"
+            alt="An ascending cobalt form representing steady long-term growth"
+            width={1000}
+            height={1100}
+            className="h-full w-full object-cover"
+          />
+        </figure>
+      </div>
     </Section>
   )
 }
